@@ -10,7 +10,7 @@
 	"content_scripts": 
 	[
 		{
-			"matches": ["*://advertiser.spotxchange.com/*"], 
+			"matches": ["*://advertiser.spotxchange.com/*","*://admin.spotxchange.com/*"], 
 			"js": ["QA_scraper.js"],
 			"run_at": "document_end"  
 		}
