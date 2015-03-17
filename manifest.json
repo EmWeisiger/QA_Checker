@@ -1,0 +1,18 @@
+{
+	"manifest_version": 2,
+	"name": "CheckIt",
+	"version": "1.0",
+	"description": "testing2",
+	"icons": { "16": "images/CheckitICON16.png",
+           "48": "images/CheckitICON48.png"
+     },
+    "web_accessible_resources": ["images/*.png"],
+	"content_scripts": 
+	[
+		{
+			"matches": ["*://advertiser.spotxchange.com/*"], 
+			"js": ["QA_scraper.js"],
+			"run_at": "document_end"  
+		}
+	]
+}
