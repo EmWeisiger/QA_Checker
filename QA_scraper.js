@@ -7,15 +7,61 @@
 // @grant       none
 // ==/UserScript==
 
+// Anonymous "self-invoking" function
+/(function() {
+    // Load the script
+    var script = document.createElement("SCRIPT");
+    script.src = 'https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js';
+    script.type = 'text/javascript';
+    document.getElementsByTagName("head")[0].appendChild(script);
+
+    // Poll for jQuery to come into existance
+    var checkReady = function(callback) {
+        if (window.jQuery) {
+            callback(jQuery);
+        }
+        else {
+            window.setTimeout(function() { checkReady(callback); }, 100);
+        }
+    };
+**/
+
+    // Start polling...
+    checkReady(function($) {
+        // Use $ here...
+        if ($) {
+          alert("jQuery is on the page");
+        } else {
+          alert("jQuery is not on the page");
+        }
+    });
+})();
+
+
+
 function checkpage() {
 	if (document.title == "SpotXchange -- Advertiser Dashboard") {
 		GatherInfo();
 	}
-//	if (document.title == "SpotXchange Dashboard") {
-//		alert('You are on the admin dashboard!');
-//		ShowPanel();
-//	}
+	if (document.title == "SpotXchange Dashboard") {
+		alert('You are on the admin dashboard!');
+		ShowPanel();
+	}
 }
+
+
+
+// Gathering information from the admin dashboard
+//function GatherInfoAdmin() {
+//	var listingStatus = document.getElementsById("_listing_status_account_status_text");
+	// If status is disabled, turns it red
+//	if (document.getElementsById("_listing_status_account_status_value") != "Active") {
+//		listingStatus.style.color="red";
+//	}
+//}
+
+// highlight things like unpublished, QA active, balance
+// grab channel name and id that it is targeted to
 
 function GatherInfo() {
 	
@@ -282,6 +328,8 @@ function ShowPanel(TypeofAd, adType, feeType, campName, titleName, disName, disC
 	
 
 }
+
+
 
 function closeInfo() {
 	//	alert('closing');
