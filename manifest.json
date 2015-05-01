@@ -3,21 +3,12 @@
 	"name": "CheckIt",
 	"version": "1.0",
 	"description": "Client services approval tool.",
-	"icons":
-    {
-        "16": "images/icon.png",
-        "48": "images/icon.png"
-     },
-    "web_accessible_resources":
-    [
-        "images/*.png",
-        "valueGrabber.html"
-    ],
 	"content_scripts":
 	[
 		{
-			"matches": ["*://WEBSITE/*","*://WEBSITE/*"],
-			"js": ["scripts/jquery-2.1.3.min.js", "scripts/main.js"],
+			"matches": ["*://advertiser.spotxchange.com/*"],
+			"css": ["css/jquery-ui.min.css", "css/jquery-ui.structure.min.css", "css/jquery-ui.theme.min.css"],
+			"js": ["scripts/jquery-2.1.3.min.js", "scripts/jquery-ui.min.js", "scripts/main.js"],
 			"run_at": "document_end"
 		}
 	]
